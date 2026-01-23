@@ -58,11 +58,3 @@
         #let player choose based on the preset skills
         #add to the number in the coorisponding index in the list specifics
     #return specifics
-
-
-        
-
-
-
-
-
