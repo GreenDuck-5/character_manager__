@@ -6,12 +6,20 @@
     #choice is ask if which they would like to do and they will input the matching number
     #if choice is 1 just reallocate
         #points is the value of each of the attributes added up
+        #change all attribute values in kwarg to 0
+        #kwarg is call point_reallocation function with points and kwarg
+
     #elif choice is 2 or 3level up
         #level in kwarg is level_up function
+        #skills_list = call determine skill function
+        #use conditionals to interpet skills list
+        #the skills in the kwarg are what was determined by the conditional
         #if choice is 3 level up and reallocate
             #points is the value of each of the attributes plus the added points of leveling up
+            #kwarg is call point_reallocation function with points and kwarg
         #points is the number of levels moved up
-    #kwarg is call point_reallocation function with points and kwarg
+    #return kwarg
+        
 
 #point_reallocation function
     #intake points as an agrument and kwarg
@@ -45,6 +53,15 @@
         #for num in range(current level, current level + leveling )
             #if num % 5 is 0 then add 1 to skill
             #if num % 5 isn't 0 then continue
+    #specifics is an empty a list of three 0s
+    #for range(skills)
+        #let player choose based on the preset skills
+        #add to the number in the coorisponding index in the list specifics
+    #return specifics
+
+#skills_attributes funciton
+    #ask if they 
+        
 
 
 
