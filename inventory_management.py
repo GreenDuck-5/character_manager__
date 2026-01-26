@@ -12,7 +12,7 @@ def inventory_menu():
     if stay_or_go == '1':
         main()
     elif stay_or_go == '2':
-        invetory_options()
+        inventory_options()
     else:
         print("Please enter a valid Number.")
     pass
