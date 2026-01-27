@@ -22,7 +22,7 @@ def inventory_menu():
 # If the user chooses not take them back to the main function?
 inventory_menu()
 # A SET FOR THE ITEMS
-inventory_items = {"starter weapn", "glass of water"}
+inventory_items = {"starter weapon", "glass of water"}
 inventory_possibilities = { "sword", "Med pack", " Bow and Arrow"}
 # A FUNCTION for the Inventory Menu
 # def inventory()
