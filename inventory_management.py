@@ -37,6 +37,7 @@ def inventory_options():
 view_add_remove = input(print("What would you like to do ?")) 
 #remove() 
 def remove():
+    print(inventory_items)
     pass
 # take the list and number it
 #Display the set
@@ -45,6 +46,7 @@ def remove():
 
 # add()
 def add():
+    print(inventory_items)
     pass
 # Display the list
 # Display add in options for the inventory
