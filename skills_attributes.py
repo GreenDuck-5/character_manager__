@@ -117,10 +117,12 @@ def level_up(current_level, leveling, skill):
     return current_level
     
 #determine_skills function
-def determine_skill(leveling, current_level):
+def determine_skill(leveling, current_level,**kwarg):
     #intake leveling
     #skills is 0
     skills = 0
+    skill = kwarg["skills"]
+    skills_list = [0,0,0]
     #if leveling is greater than 1
     if leveling > 1:
         #current_level += 1
@@ -133,9 +135,33 @@ def determine_skill(leveling, current_level):
             #if num % 5 isn't 0 then continue
     #specifics is an empty a list of three 0s
     specifics = [0,0,0]
-    #for range(skills)
-    for range(skills):
-        #let player choose based on the preset skills
-        print("You can choose between the following skills")
-        #add to the number in the coorisponding index in the list specifics
+
+    #while true
+    while True:
+        #for range(skills)
+        for num in range(skills):
+            #let player choose based on the preset skills
+            print("""You can choose between the following skills:
+            1. Sword Fighting
+            2. Brawling
+            3. Bow and Arrow""")
+            choice = input("Enter the number of your choice here: ")
+            if choice == "1":
+                add_value = skill_check("sword fighting", skill)
+                if add_value == True:
+                    skills_list[0] = 1
+            elif choice == "2":
+                add_value = skill_checker("brawling", skill)
+                if add_value == True:
+                    skill_list[1]
+            elif choice == "3":
+                add_value = skill_checker("bow and arrow", skill)
+                if add_value == True:
+                    skill_list[2]
+            #add to the number in the coorisponding index in the list specifics
     #return specifics
+
+#skill check function
+    #intake skills and current skills
+    #if that skill is in the current skills return false
+    #else return true
