@@ -3,14 +3,21 @@
 attributes_list = [0,0,0,0]
 skills = {}
 #attributes funtion
-def attributes(strength,intelligence,wisdom,charisma,level,*skills):
+def attributes_func(**kwarg):
     #take all current attributes in the form of a kwarg
-    inventory = {}
+    inventory = kwarg["inventory"]
+    attributes = kwarg["attributes"]
+    strength = attributes[0]
+    intelligence = attributes[1]
+    wisdom = attributes[2]
+    charisma = attributes[3]
+    skills = kwarg["skills"]
     #show them a menu of options about reallocation of attribute points
     print("This is the skills and attribute manager. You have the following options:\n" \
     "1. Reallocate existing points to differenct attributes\n" \
     "2. Level up and you need to allocate new points\n" \
-    "3. Level up and reallocate")
+    "3. Level up and reallocate\n" \
+    "4. Exit")
     #choice is ask if which they would like to do and they will input the matching number
     choice = input("Please input you choice number here: ")
     #if choice is 1 just reallocate
@@ -28,11 +35,12 @@ def attributes(strength,intelligence,wisdom,charisma,level,*skills):
     #elif choice is 2 or 3level up
     elif choice == "2" or choice == "3":
         #level in kwarg is level_up function
+        print("The max level you can reach is 15 so don't add more than would sum to 15.")
         leveling = int(input("How much did you level up: "))
-        current_level = level
-        level = level_up(level, leveling)
+        current_level = kwarg["level"]
+        current_level = level_up(current_level, leveling)
         #skills_list = call determine skill function
-        skills_list = determine_skill(leveling)
+        skills_list = determine_skill(leveling, current_level)
         #if there are skills that were gained add items to inventory
         if skills_list != []:
             #use conditionals to interpet skills list
@@ -70,39 +78,64 @@ def point_reallocation(points, strength, intelligence, wisdom, charisma):
         #tell then the value of points
         #while loop until points is 0
     while points > 0:
-            #for each key in kwarg
-        for attribute in attribute_list:
+        
+            #for each key in attributes
+        for attribute in range(len(attribute_list)):
+            attribute -= 1
                 #iteration is true
             iteration = True
                 #while loop until iteration is false
             while iteration == True:
                     #reallocate is asking the user how much they would like to add to this attribte
-                reallocate = input
+                reallocate = int(input(f"Please input the number of points you want to put in the {attribute_list[attribute]} attribute: "))
                     #make sure that the amout is within the points limit
+                if reallocate <= points:
                     #if it is then the key is that number of reallocated
+                    attribute_list[attribute] = reallocate                
                     #subtract the value of reallocated from points
+                    points -= reallocate                        
                     #iteration is false
+                    iteration = False
                     #if not then continue
+                else:
+                    continue
     #return kwarg
+    return attribute_list
 
 #level_up function
+def level_up(current_level, leveling, skill):
     #intake current level and how much they are leveling up
     #show that the max level is 15
+
     #add leveling to current level
+    current_level += leveling
     #if it is greater than 15 then subract what is extra
-    #elif is less than 15 pass
+    if current_level > 15:
+        subtract = current_level - 15
+        current_level -= subtract
     #return level
+    return current_level
     
 #determine_skills function
+def determine_skill(leveling, current_level):
     #intake leveling
     #skills is 0
+    skills = 0
     #if leveling is greater than 1
+    if leveling > 1:
         #current_level += 1
+        current_level += 1
         #for num in range(current level, current level + leveling )
+        for num in range(current_level,current_level + leveling):
             #if num % 5 is 0 then add 1 to skill
+            if num % 5 == 0:
+                skills += 1
             #if num % 5 isn't 0 then continue
     #specifics is an empty a list of three 0s
+    specifics = [0,0,0]
     #for range(skills)
+    for range(skills):
         #let player choose based on the preset skills
+        print("You can choose between the following skills")
         #add to the number in the coorisponding index in the list specifics
     #return specifics
