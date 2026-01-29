@@ -22,38 +22,36 @@ def attributes_func(kwarg):
         print("This is the skills and attribute manager. You have the following options:\n" \
         "1. Reallocate existing points to differenct attributes\n" \
         "2. Level up and you need to allocate new points\n" \
-        "3. Level up and reallocate\n" \
-        "4. Exit")
+        "3. Exit")
         #choice is ask if which they would like to do and they will input the matching number
         choice = input("Please input you choice number here: ")
         #if choice is 1 just reallocate
         if choice == "1":
             #points is the value of each of the attributes added up
+            strength, intelligence, wisdom, charisma = kwarg["attributes"]
             points = strength + intelligence + wisdom + charisma
-            #change all attribute values in kwarg to 0
-            #[strength, intelligence, wisdom, charisma]
-            strength = 0
-            intelligence = 0
-            wisdom = 0
-            charisma = 0
-            #kwarg is call point_reallocation function with points and kwarg
-            attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
+                #kwarg is call point_reallocation function with points and kwarg
+            attributes_list = point_reallocation(points, strength = 0, intelligence=0, wisdom=0, charisma=0)
             for num in range(4):
+                names = ["Strength", "Intelligence", "Wisdom", "Charisma"]
                 kwarg["attributes"][num] = attributes_list[num]
-                print(f"Your {kwarg["attributes"][num]} attribute has {attributes_list[num]}")
+                print(f"Your {names[num]} attribute has {attributes_list[num]} points")
         #elif choice is 2 or 3level up
-        elif choice == "2" or choice == "3":
+        elif choice == "2":
             #level in kwarg is level_up function
             old_level = kwarg["level"]
             
             print("The max level you can reach is 15 so don't add more than would sum to 15.")
             print(f"Your current level is {old_level}")
             leveling = int(input("How much did you level up: "))
+
             if leveling < 0:
                 print("You cannot level down.")
                 return kwarg
             current_level = level_up(old_level, leveling)
             kwarg["level"] = current_level
+            points = leveling
+            attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
             #skills_list = call determine skill function
             skills_list = determine_skill(leveling, current_level, skills=skills)
             #use conditionals to interpet skills list
@@ -71,23 +69,12 @@ def attributes_func(kwarg):
                 print(skill)
             #the skills in the kwarg are what was determined by the conditional
             #if choice is 3 level up and reallocate
-            if choice == "3":
-                #points is the value of each of the attributes plus the added points of leveling up
-                strength, intelligence, wisdom, charisma = kwarg["attributes"]
-                points = leveling + strength + intelligence + wisdom + charisma
-                strength = 0
-                intelligence = 0 
-                wisdom = 0
-                charisma = 0
-                #kwarg is call point_reallocation function with points and kwarg
-                attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
-            #points is the number of levels moved up
             for num in range(4):
                 names = ["Strength", "Intelligence", "Wisdom", "Charisma"]
                 kwarg["attributes"][num] = attributes_list[num]
-                print(f"Your {names[num]} attribute has {attributes_list[num]}")
+                print(f"Your {names[num]} attribute has {attributes_list[num]} points")
         #exit the function
-        elif choice == "4":
+        elif choice == "3":
             return kwarg   
     
         
@@ -143,7 +130,7 @@ def level_up(current_level, leveling):
     return current_level
     
 #determine_skills function
-def determine_skill(leveling, current_level,**kwarg):
+def determine_skill(leveling, current_level,kwarg):
     #intake leveling
     #skills is 0
     skills_earned = 0
