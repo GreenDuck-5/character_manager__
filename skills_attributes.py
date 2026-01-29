@@ -40,15 +40,18 @@ def attributes_func(kwarg):
             attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
             for num in range(4):
                 kwarg["attributes"][num] = attributes_list[num]
+                print(f"Your {kwarg["attributes"][num]} attribute has {attributes_list[num]}")
         #elif choice is 2 or 3level up
         elif choice == "2" or choice == "3":
             #level in kwarg is level_up function
+            old_level = kwarg["level"]
+            
             print("The max level you can reach is 15 so don't add more than would sum to 15.")
+            print(f"Your current level is {old_level}")
             leveling = int(input("How much did you level up: "))
             if leveling < 0:
                 print("You cannot level down.")
                 return kwarg
-            old_level = kwarg["level"]
             current_level = level_up(old_level, leveling)
             kwarg["level"] = current_level
             #skills_list = call determine skill function
@@ -63,17 +66,22 @@ def attributes_func(kwarg):
             if skills_list[2] == 1:
                 skills.add("archery")
                 inventory.append("bow and arrow")
+            print("Your skills  are:")
+            for skill in skills:
+                print(skill)
             #the skills in the kwarg are what was determined by the conditional
             #if choice is 3 level up and reallocate
             if choice == "3":
                 #points is the value of each of the attributes plus the added points of leveling up
                 strength, intelligence, wisdom, charisma = kwarg["attributes"]
-                points = leveling
+                points = leveling + 
                 #kwarg is call point_reallocation function with points and kwarg
                 attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
             #points is the number of levels moved up
             for num in range(4):
+                names = ["Strength", "Intelligence", "Wisdom", "Charisma"]
                 kwarg["attributes"][num] = attributes_list[num]
+                print(f"Your {names[num]} attribute has {attributes_list[num]}")
         #exit the function
         elif choice == "4":
             return kwarg   
@@ -121,7 +129,6 @@ def point_reallocation(points, strength, intelligence, wisdom, charisma):
 def level_up(current_level, leveling):
     #intake current level and how much they are leveling up
     #show that the max level is 15
-
     #add leveling to current level
     current_level += leveling
     #if it is greater than 15 then subract what is extra
