@@ -70,7 +70,7 @@ def inventory_options():
             inventory_menu()
             break
         else:
-            print("please enter a valid value.")
+            print("please enter a valid value to continue.")
 
 
 #remove() 
@@ -85,7 +85,7 @@ def remove():
 
     #Display the set
     # ask what they want to remove
-    choice = input("What number do you want to remove? ")
+    choice = input("What number do you want to remove from your inevntory? ")
 
     if choice.isdigit():
         choice = int(choice)
