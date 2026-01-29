@@ -1,5 +1,11 @@
 #DJ, 1st, Character Search Function
 
+#funciton to clear screen
+def clear_screen(): print("\033c", end="")
+
+#funciton to let user pick when to continue screen
+def continue_screen(): input("Press \"Enter\" or \"Return\" to continue:\n")
+
 # temp characters
 characters = [
     {"name": "Aria", "class": "Wizard", "race": "Elf", "level": 5},
@@ -13,24 +19,42 @@ def character_search(characters):
     # Give options on how to search: Class, Race, Name, Level
     search_options = ["class", "race", "name", "level"]
 
-    print("How would you like to search?")
-    #Search Function(User Input on "how to search"):
-    print("Options: Class, Race, Name, Level")
-    # Let user search:
-    search_type = input("Enter search type: ").lower()
+    while True:
+        many_search = input("How many factors would you like to search by?: ")
 
-    if search_type not in search_options:
-        print("Please enter valid input.")
-        return character_search(characters)
+        if many_search.isdigit():
+            many_search = int(many_search)
+            break
+            
+        else:
+            print("Please enter valid input.")
+            continue_screen()
+            clear_screen()
+            continue
 
-    search_value = input(f"Enter {search_type} to search for: ").lower()
+
+
+    while True:
+        print("How would you like to search?")
+        #Search Function(User Input on "how to search"):
+        print("Options: Class, Race, Name, Level")
+        # Let user search:
+        search_type = input("Enter search type: ").lower()
+
+        if search_type not in search_options:
+            print("Please enter valid input.")
+            continue
+
+        else: break
+
+    search_value = input(f"Enter {search_type} to search for: ").title()
     
     matches = []
 
         # Loop through Characters:
     for character in characters:
             # If Character has the "how to search" requested by user:
-        if str(character[search_type]).lower == search_value:
+        if str(character[search_type]).title() == search_value:
                 # Print Character Name
                 matches.append(character)
 
@@ -64,4 +88,5 @@ def character_search(characters):
             characters.remove(selected_character)
             print(f"{selected_character['name']} has been deleted.")
             return
-character_search()
+
+character_search(characters)
