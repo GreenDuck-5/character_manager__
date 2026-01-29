@@ -74,7 +74,11 @@ def attributes_func(kwarg):
             if choice == "3":
                 #points is the value of each of the attributes plus the added points of leveling up
                 strength, intelligence, wisdom, charisma = kwarg["attributes"]
-                points = leveling + 
+                points = leveling + strength + intelligence + wisdom + charisma
+                strength = 0
+                intelligence = 0 
+                wisdom = 0
+                charisma = 0
                 #kwarg is call point_reallocation function with points and kwarg
                 attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
             #points is the number of levels moved up
