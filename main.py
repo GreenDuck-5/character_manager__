@@ -1,5 +1,4 @@
 #Main file containing user interface
-
 def clear_screen(): print("\033c", end = "")
 
 def continue_screen(): input("Press \"Enter\" or \"Return\" to continue:\n")

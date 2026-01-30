@@ -8,9 +8,20 @@ def continue_screen(): input("Press \"Enter\" or \"Return\" to continue:\n")
 
 # temp characters
 characters = [
-    {"name": "Aria", "class": "Wizard", "race": "Elf", "level": 5},
-    {"name": "Brom", "class": "Fighter", "race": "Human", "level": 3},
-    {"name": "Kara", "class": "Rogue", "race": "Halfling", "level": 4}
+    {"name": "Aria",
+    "class": "Wizard",
+    "race": "Elf", 
+    "level": 5},
+
+    {"name": "Brom",
+    "class": "Fighter",
+    "race": "Human", 
+    "level": 3},
+    
+    {"name": "Kara", 
+     "class": "Rogue", 
+     "race": "Halfling", 
+     "level": 4}
 ]
 
 #Character Search Function:
@@ -18,21 +29,6 @@ def character_search(characters):
 
     # Give options on how to search: Class, Race, Name, Level
     search_options = ["class", "race", "name", "level"]
-
-    while True:
-        many_search = input("How many factors would you like to search by?: ")
-
-        if many_search.isdigit():
-            many_search = int(many_search)
-            break
-            
-        else:
-            print("Please enter valid input.")
-            continue_screen()
-            clear_screen()
-            continue
-
-
 
     while True:
         print("How would you like to search?")
