@@ -8,9 +8,20 @@ def continue_screen(): input("Press \"Enter\" or \"Return\" to continue:\n")
 
 # temp characters
 characters = [
-    {"name": "Aria", "class": "Wizard", "race": "Elf", "level": 5},
-    {"name": "Brom", "class": "Fighter", "race": "Human", "level": 3},
-    {"name": "Kara", "class": "Rogue", "race": "Halfling", "level": 4}
+    {"name": "Aria",
+    "class": "Wizard",
+    "race": "Elf", 
+    "level": 5},
+
+    {"name": "Brom",
+    "class": "Fighter",
+    "race": "Human", 
+    "level": 3},
+    
+    {"name": "Kara", 
+     "class": "Rogue", 
+     "race": "Halfling", 
+     "level": 4}
 ]
 
 #Character Search Function:
