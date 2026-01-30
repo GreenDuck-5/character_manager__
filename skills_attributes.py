@@ -21,7 +21,7 @@ def attributes_func(kwarg):
         #show them a menu of options about reallocation of attribute points
         print("This is the skills and attribute manager. You have the following options:\n" \
         "1. Reallocate existing points to differenct attributes\n" \
-        "2. Level up and you need to allocate new points\n" \
+        "2. Level up\n" \
         "3. Exit")
         #choice is ask if which they would like to do and they will input the matching number
         choice = input("Please input you choice number here: ")
@@ -53,7 +53,7 @@ def attributes_func(kwarg):
             points = leveling
             attributes_list = point_reallocation(points, strength, intelligence, wisdom, charisma)
             #skills_list = call determine skill function
-            skills_list = determine_skill(leveling, current_level, skills=skills)
+            skills_list = determine_skill(leveling, current_level, skills)
             #use conditionals to interpet skills list
             if skills_list[0] == 1:
                 skills.add("sword fighting")
@@ -130,22 +130,16 @@ def level_up(current_level, leveling):
     return current_level
     
 #determine_skills function
-def determine_skill(leveling, current_level,kwarg):
+def determine_skill(leveling, current_level, skill):
     #intake leveling
     #skills is 0
     skills_earned = 0
-    skill = kwarg["skills"]
     skills_list = [0,0,0]
     #if leveling is greater than 1
-    if leveling > 1:
-        #current_level += 1
-        current_level += 1
-        #for num in range(current level, current level + leveling )
-        for num in range(current_level,current_level + leveling):
-            #if num % 5 is 0 then add 1 to skill
-            if num % 5 == 0:
-                skills_earned += 1
-            #if num % 5 isn't 0 then continue
+    old_level = current_level - leveling
+    for num in range(old_level + 1, current_level + 1):
+        if num % 5 == 0:
+            skills_earned += 1
 
     #for range(skills)
     for num in range(skills_earned):
