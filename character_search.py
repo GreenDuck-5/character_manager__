@@ -31,21 +31,6 @@ def character_search(characters):
     search_options = ["class", "race", "name", "level"]
 
     while True:
-        many_search = input("How many factors would you like to search by?: ")
-
-        if many_search.isdigit():
-            many_search = int(many_search)
-            break
-            
-        else:
-            print("Please enter valid input.")
-            continue_screen()
-            clear_screen()
-            continue
-
-
-
-    while True:
         print("How would you like to search?")
         #Search Function(User Input on "how to search"):
         print("Options: Class, Race, Name, Level")
